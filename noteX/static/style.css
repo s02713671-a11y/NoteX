@@ -1,0 +1,425 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f5f7;
+    color: #222;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header p {
+    margin-top: 6px;
+    color: #666;
+}
+
+.notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.note {
+    min-height: 180px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s;
+}
+
+.note:hover {
+    transform: translateY(-5px);
+}
+
+.note h3 {
+    margin-top: 0;
+}
+
+.yellow {
+    background: #fff3a6;
+}
+
+.blue {
+    background: #bfe3ff;
+}
+
+.green {
+    background: #c8f7c5;
+}
+
+.pink {
+    background: #ffd1dc;
+}
+
+.purple {
+    background: #d8b4fe;
+}
+
+
+@media (max-width: 600px) {
+    .notes-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+}
+
+/* NoteX Controls */
+
+#addNoteBtn {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    background: #222;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#addNoteBtn:hover {
+    transform: scale(1.05);
+}
+
+.search-box {
+    max-width: 500px;
+    margin: 10px auto 0;
+    padding: 0 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    font-size: 15px;
+}
+
+#searchInput:focus {
+    border-color: #999;
+}
+
+.pin-note,
+.delete-note {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.pin-note {
+    float: left;
+}
+
+.delete-note {
+    float: right;
+}
+
+.pin-note:hover,
+.delete-note:hover {
+    background: rgba(0, 0, 0, 0.08);
+    transform: scale(1.1);
+}
+
+/* NoteX Color Buttons */
+
+.color-picker {
+    display: flex;
+    gap: 5px;
+    margin: 8px 0;
+}
+
+.color-btn {
+    border: none;
+    background: transparent;
+    padding: 2px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.color-btn:hover {
+    transform: scale(1.15);
+    background: rgba(0, 0, 0, 0.08);
+}
+
+/* NoteX Dark Mode */
+
+body.dark-mode {
+    background: #18181b;
+    color: #f5f5f5;
+}
+
+body.dark-mode .header p {
+    color: #aaa;
+}
+
+body.dark-mode #searchInput {
+    background: #27272a;
+    color: #fff;
+    border-color: #444;
+}
+
+body.dark-mode #searchInput::placeholder {
+    color: #aaa;
+}
+
+body.dark-mode #addNoteBtn,
+body.dark-mode #darkModeBtn {
+    background: #f5f5f5;
+    color: #18181b;
+}
+
+/* =========================
+   NoteX Mobile UI
+   ========================= */
+
+   @media (max-width: 600px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .header {
+        padding: 18px 10px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+
+    .notes-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        width: 100%;
+    }
+
+    .note {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px;
+    }
+
+    .note-title {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 17px;
+    }
+
+    .note-text {
+        width: 100%;
+        min-height: 130px;
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+
+    .color-picker {
+        gap: 7px;
+    }
+
+    .color-btn {
+        font-size: 18px;
+        padding: 4px;
+    }
+
+    #addNoteBtn,
+    #darkModeBtn {
+        width: 100%;
+        min-height: 44px;
+        margin-top: 8px;
+    }
+
+    #searchInput {
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 44px;
+        font-size: 16px;
+    }
+}
+
+/* NoteX Mobile Header Polish */
+
+@media (max-width: 600px) {
+    .header {
+        padding: 12px 8px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 24px;
+        margin: 0 0 4px;
+    }
+
+    .header p {
+        font-size: 13px;
+        margin: 0;
+    }
+}
+.color-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #333;
+}
+
+.yellow-btn {
+    background: #fff3a6;
+}
+
+.blue-btn {
+    background: #bfe3ff;
+}
+
+.green-btn {
+    background: #c8f7c5;
+}
+
+.pink-btn {
+    background: #ffd1dc;
+}
+
+.purple-btn {
+    background: #d8b4fe;
+}
+.pin-note,
+.delete-note {
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-size: 22px;
+}
+
+.pin-icon {
+    color: #ef4444;
+}
+
+.bin-icon {
+    color: #ef4444;
+}
+.delete-note {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 4px;
+    outline: none;
+    appearance: none;
+}
+
+.delete-note:hover {
+    transform: scale(1.15);
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 8px;
+}
+/* NoteX Trash Icon */
+
+.delete-note {
+    border: none;
+    background: transparent;
+    padding: 5px;
+    cursor: pointer;
+    outline: none;
+    width: 32px;
+    height: 32px;
+}
+
+.trash-icon {
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 16px;
+    margin: auto;
+    background: #ef4444;
+    border-radius: 2px;
+}
+
+.trash-icon::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 3px;
+    background: #ef4444;
+    left: -2px;
+    top: -4px;
+    border-radius: 2px;
+}
+
+.trash-icon::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 2px;
+    background: #ef4444;
+    left: 4px;
+    top: -7px;
+    border-radius: 2px;
+}
+
+.delete-note:hover {
+    transform: scale(1.15);
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 8px;
+}
+#undoBar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#undoBtn {
+    border: none;
+    background: #facc15;
+    color: #222;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#undoBtn:hover {
+    transform: scale(1.05);
+}
+
+#noteCounter {
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    margin: 4px 0 0;
+    width: 100%;
+}
+body.dark-mode #noteCounter {
+    color: #aaa;
+}

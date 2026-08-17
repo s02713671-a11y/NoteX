@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteX</title>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>NoteX</h1>
+        <p>Your colorful sticky-note space.</p>
+        
+        <button id="darkModeBtn" type="button">🌙 Dark Mode</button>
+    
+        <button id="addNoteBtn">＋ Add Note</button>
+    </div>
+    
+    <p id="noteCounter">0 Notes • 0 Pinned</p>
+
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search notes..."
+        >
+    </div>
+
+    <div class="notes-container">
+
+        <div class="note yellow">
+            <h3>🟨 Physics</h3>
+            <p>Complete Chapter 2 notes.</p>
+        </div>
+
+        <div class="note blue">
+            <h3>🟦 Project</h3>
+            <p>Work on NoteX today.</p>
+        </div>
+
+        <div class="note green">
+            <h3>🟩 Tasks</h3>
+            <p>☐ Study<br>☐ Practice<br>☐ Finish homework</p>
+        </div>
+
+        <div class="note pink">
+            <h3>🩷 Reminder</h3>
+            <p>Don't forget important work.</p>
+        </div>
+
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker.register("/sw.js")
+                    .then(function () {
+                        console.log("NoteX Service Worker registered");
+                    })
+                    .catch(function (error) {
+                        console.log("Service Worker error:", error);
+                    });
+            });
+        }
+    </script>
+</body>
