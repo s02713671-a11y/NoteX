@@ -1,4 +1,4 @@
-const CACHE_NAME = "notex-v1.4";
+const CACHE_NAME = "notex-v1.5";
 
 
 const FILES_TO_CACHE = [
@@ -33,23 +33,20 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
     event.respondWith(
-        caches.match(event.request).then(cachedResponse => {
+        fetch(event.request)
+            .then(response => {
+                if (response && response.status === 200) {
+                    const responseClone = response.clone();
 
-            if (cachedResponse) {
-                return cachedResponse;
-            }
+                    caches.open(CACHE_NAME).then(cache => {
+                        cache.put(event.request, responseClone);
+                    });
+                }
 
-            // Ignore missing favicon request
-            if (event.request.url.endsWith("/favicon.ico")) {
-                return new Response("", {
-                    status: 204,
-                    statusText: "No Content"
-                });
-            }
-
-            return fetch(event.request).catch(() => {
-                return caches.match("/");
-            });
-        })
+                return response;
+            })
+            .catch(() => {
+                return caches.match(event.request);
+            })
     );
 });
